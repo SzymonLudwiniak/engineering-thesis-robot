@@ -16,8 +16,7 @@
  * =====================================================================================
  */
 
-#ifndef DEFINES_H
-#define DEFINES_H
+#pragma once
 
 
 //////////////////////////////////
@@ -58,24 +57,21 @@
 //////////////////////////////////////
 
 
-#define TRIGGER         GPIO_NUM_19
-#define ECHO            GPIO_NUM_21
+#define TRIGGER         19
+#define ECHO            21
 
 #define IN1             GPIO_NUM_27
 #define IN2             GPIO_NUM_26
 #define IN3             GPIO_NUM_25
 #define IN4             GPIO_NUM_33
 
-#define M1_ENABLE       GPIO_NUM_23
-#define M2_ENABLE       GPIO_NUM_22
+#define M1_ENABLE       23
+#define M2_ENABLE       22
 
-#define M1_CONTROL_1    GPIO_NUM_2
-#define M1_CONTROL_2    GPIO_NUM_4 
-#define M2_CONTROL_1    GPIO_NUM_5
-#define M2_CONTROL_2    GPIO_NUM_18
+#define M1_CONTROL_1    2
+#define M1_CONTROL_2    4 
+#define M2_CONTROL_1    5
+#define M2_CONTROL_2    18
 
 #define HIGH 1
 #define LOW 0
-
-
-#endif // DEFINES_H
