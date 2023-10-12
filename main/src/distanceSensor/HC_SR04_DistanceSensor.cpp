@@ -3,7 +3,7 @@
 #include "freertos/task.h"
 #include "esp_timer.h"
 
-HC_SR04_DistanceSensor::HC_SR04_DistanceSensor(GPIO &echo, GPIO &trigger)
+HC_SR04_DistanceSensor::HC_SR04_DistanceSensor(IGPIO &echo, IGPIO &trigger)
     : _echo(echo), _trigger(trigger) {
     _delay = 0;
     _time = 0;

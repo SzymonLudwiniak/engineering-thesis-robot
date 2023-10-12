@@ -1,11 +1,11 @@
 #include "hbridge/L293D_HBridge.h"
 
-L293D_HBridge::L293D_HBridge(GPIO &m1Enable,
-                             GPIO &m2Enable,
-                             GPIO &m1Controll1,
-                             GPIO &m1Controll2,
-                             GPIO &m2Controll1,
-                             GPIO &m2Controll2)
+L293D_HBridge::L293D_HBridge(IGPIO &m1Enable,
+                             IGPIO &m2Enable,
+                             IGPIO &m1Controll1,
+                             IGPIO &m1Controll2,
+                             IGPIO &m2Controll1,
+                             IGPIO &m2Controll2)
     : _m1Enable(m1Enable),
       _m2Enable(m2Enable),
       _m1Controll1(m1Controll1),
