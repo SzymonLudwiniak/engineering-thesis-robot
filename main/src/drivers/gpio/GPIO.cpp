@@ -1,4 +1,4 @@
-#include "externals/gpio/GPIO.h"
+#include "drivers/gpio/GPIO.h"
 
 
 GPIO::GPIO(uint8_t gpioNum, PinMode mode) {

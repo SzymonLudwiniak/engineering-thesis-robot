@@ -1,4 +1,4 @@
-#include "distanceSensor/HC_SR04_DistanceSensor.h"
+#include "drivers/distanceSensor/HC_SR04_DistanceSensor.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_timer.h"

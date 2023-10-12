@@ -1,4 +1,4 @@
-#include "hbridge/L293D_HBridge.h"
+#include "drivers/hbridge/L293D_HBridge.h"
 
 L293D_HBridge::L293D_HBridge(IGPIO &m1Enable,
                              IGPIO &m2Enable,

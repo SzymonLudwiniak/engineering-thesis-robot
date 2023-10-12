@@ -1,5 +1,5 @@
 
-#include "stepperMotor/ULN200X_StepperMotor.h"
+#include "drivers/stepperMotor/ULN200X_StepperMotor.h"
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -39,31 +39,6 @@ void ULN200X_StepperMotor::rotateFor(int16_t degrees) {
         }
     }
 }
-
-// // every step is equal to 0.17578125 degree
-// void ULN200X_StepperMotor::commandA() {
-//     _IN1.setLevel(1);
-//     vTaskDelay(1);
-//     _IN1.setLevel(0);
-// }
-
-// void ULN200X_StepperMotor::commandB() {
-//     _IN2.setLevel(1);
-//     vTaskDelay(1);
-//     _IN2.setLevel(0);
-// }
-
-// void ULN200X_StepperMotor::commandC() {
-//     _IN3.setLevel(1);
-//     vTaskDelay(1);
-//     _IN3.setLevel(0);
-// }
-
-// void ULN200X_StepperMotor::commandD() {
-//     _IN4.setLevel(1);
-//     vTaskDelay(1);
-//     _IN4.setLevel(0);
-// }
 
 void ULN200X_StepperMotor::commandAB() {
     _IN1.setLevel(1);
