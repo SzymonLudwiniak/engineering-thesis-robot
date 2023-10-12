@@ -6,5 +6,8 @@ cmake_minimum_required(VERSION 3.16)
 
 set(CMAKE_CXX_STANDARD 20)
 
+add_subdirectory(etl)
+link_libraries(etl::etl)
+
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(engineering-thesis-robot-v2)

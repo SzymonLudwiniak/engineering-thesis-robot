@@ -13,7 +13,7 @@ HC_SR04_DistanceSensor::HC_SR04_DistanceSensor(IGPIO &echo, IGPIO &trigger)
 
 HC_SR04_DistanceSensor::~HC_SR04_DistanceSensor() {}
 
-uint64_t HC_SR04_DistanceSensor::calculateDistanceCm() {
+uint16_t HC_SR04_DistanceSensor::calculateDistanceCm() {
     _trigger.setLevel(1);
     vTaskDelay(10 / portTICK_PERIOD_MS);
     _trigger.setLevel(0);
@@ -27,5 +27,5 @@ uint64_t HC_SR04_DistanceSensor::calculateDistanceCm() {
     }
     _delay = esp_timer_get_time() - _time;
 
-    return _delay / 58; 
+    return static_cast<uint16_t>(_delay / 58); 
 }

@@ -2,7 +2,7 @@
 
 #include "IHBridge.h"
 
-#include "externals/gpio/IGPIO.h"
+#include "drivers/gpio/IGPIO.h"
 
 class L293D_HBridge : public IHBridge{
    public:

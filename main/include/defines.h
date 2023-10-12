@@ -75,3 +75,5 @@
 
 #define HIGH 1
 #define LOW 0
+
+#define MEASURE_COUNT   181

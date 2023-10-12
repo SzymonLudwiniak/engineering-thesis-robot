@@ -6,5 +6,5 @@ class IDistanceSensor {
    public:
     ~IDistanceSensor() {}
 
-    virtual uint64_t calculateDistanceCm() = 0;
+    virtual uint16_t calculateDistanceCm() = 0;
 };

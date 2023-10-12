@@ -1,6 +1,8 @@
 
 #include "drivers/stepperMotor/ULN200X_StepperMotor.h"
 
+#include <cstdio>
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
@@ -9,35 +11,55 @@ ULN200X_StepperMotor::ULN200X_StepperMotor(IGPIO &input1,
                                            IGPIO &input3,
                                            IGPIO &input4)
     : _IN1(input1), _IN2(input2), _IN3(input3), _IN4(input4) {
-    _currentAngle = 0;
+    _stepStatus = 0;
 }
 
 ULN200X_StepperMotor::~ULN200X_StepperMotor() {}
 
-void ULN200X_StepperMotor::rotateFor(int16_t degrees) {
-    if (degrees + _currentAngle < 0 || degrees + _currentAngle > 180) {
-        return;
-    }
+bool ULN200X_StepperMotor::rotateFor(int16_t steps) {
+    // if (steps + _stepStatus < 0 || steps + _stepStatus > 2048) {
+    //     return false;
+    // }
 
-    _currentAngle += degrees;
+    _stepStatus += steps;
 
-    int16_t steps_x4 = 512 * degrees / 360;
-    if (steps_x4 > 0) {
-        for (int i = 0; i < steps_x4; i++) {
-            commandAB();
-            commandBC();
-            commandCD();
-            commandDA();
+    if (steps > 0) {
+        for (int i = 0; i < steps; i++) {
+            switch (i % 4) {
+                case 0:
+                    commandAB();
+                    break;
+                case 1:
+                    commandBC();
+                    break;
+                case 2:
+                    commandCD();
+                    break;
+                case 3:
+                    commandDA();
+                    break;
+            }
         }
     } else {
-        steps_x4 *= -1;
-        for (int i = 0; i < steps_x4; i++) {
-            commandDA();
-            commandCD();
-            commandBC();
-            commandAB();
+        steps *= -1;
+        for (int i = 0; i < steps; i++) {
+            switch (i % 4) {
+                case 3:
+                    commandAB();
+                    break;
+                case 2:
+                    commandBC();
+                    break;
+                case 1:
+                    commandCD();
+                    break;
+                case 0:
+                    commandDA();
+                    break;
+            }
         }
     }
+    return true;
 }
 
 void ULN200X_StepperMotor::commandAB() {

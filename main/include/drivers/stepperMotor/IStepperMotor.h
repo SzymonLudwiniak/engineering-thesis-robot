@@ -5,5 +5,5 @@
 class IStepperMotor {
    public:
     ~IStepperMotor() {}
-    virtual void rotateFor(int16_t degrees) = 0;
+    virtual bool rotateFor(int16_t steps) = 0;
 };
