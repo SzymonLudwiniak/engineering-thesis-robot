@@ -60,10 +60,10 @@
 #define TRIGGER         19
 #define ECHO            21
 
-#define IN1             GPIO_NUM_27
-#define IN2             GPIO_NUM_26
-#define IN3             GPIO_NUM_25
-#define IN4             GPIO_NUM_33
+#define IN1             27
+#define IN2             26
+#define IN3             25
+#define IN4             33
 
 #define M1_ENABLE       23
 #define M2_ENABLE       22
