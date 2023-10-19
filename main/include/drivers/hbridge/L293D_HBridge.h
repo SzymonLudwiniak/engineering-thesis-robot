@@ -25,4 +25,9 @@ class L293D_HBridge : public IHBridge{
     IGPIO &_m1Controll2;
     IGPIO &_m2Controll1;
     IGPIO &_m2Controll2;
+
+    void startForward();
+    void startBackward();
+    void startLeft();
+    void startRight();
 };

@@ -31,40 +31,20 @@ void L293D_HBridge::setMotorState(Motor motor, uint8_t state) {
 }
 
 void L293D_HBridge::start(Motor motor, MotorDirection direction) {
-    if (direction == MotorDirection::FORWARD) {
-        switch (motor) {
-            case Motor::MOTOR1:
-                _m1Controll1.setLevel(0);
-                _m1Controll2.setLevel(1);
-                break;
-            case Motor::MOTOR2:
-                _m2Controll1.setLevel(0);
-                _m2Controll2.setLevel(1);
-                break;
-            case Motor::BOTH:
-                _m1Controll1.setLevel(0);
-                _m1Controll2.setLevel(1);
-                _m2Controll1.setLevel(0);
-                _m2Controll2.setLevel(1);
-                break;
-        }
-        return;
-    }
-
-    switch (motor) {
-        case Motor::MOTOR1:
-            _m1Controll2.setLevel(0);
-            _m1Controll1.setLevel(1);
+    switch (direction) {
+        case MotorDirection::FORWARD:
+            startForward();
             break;
-        case Motor::MOTOR2:
-            _m2Controll2.setLevel(0);
-            _m2Controll1.setLevel(1);
+        case MotorDirection::BACKWARD:
+            startBackward();
             break;
-        case Motor::BOTH:
-            _m1Controll2.setLevel(0);
-            _m1Controll1.setLevel(1);
-            _m2Controll2.setLevel(0);
-            _m2Controll1.setLevel(1);
+        case MotorDirection::LEFT:
+            startLeft();
+            break;
+        case MotorDirection::RIGHT:
+            startRight();
+            break;
+        default:
             break;
     }
 }
@@ -84,6 +64,82 @@ void L293D_HBridge::stop(Motor motor) {
             _m1Controll2.setLevel(0);
             _m2Controll1.setLevel(0);
             _m2Controll2.setLevel(0);
+            break;
+    }
+}
+
+void L293D_HBridge::startForward() {
+    switch (motor) {
+        case Motor::MOTOR1:
+            _m1Controll1.setLevel(0);
+            _m1Controll2.setLevel(1);
+            break;
+        case Motor::MOTOR2:
+            _m2Controll1.setLevel(0);
+            _m2Controll2.setLevel(1);
+            break;
+        case Motor::BOTH:
+            _m1Controll1.setLevel(0);
+            _m1Controll2.setLevel(1);
+            _m2Controll1.setLevel(0);
+            _m2Controll2.setLevel(1);
+            break;
+    }
+}
+
+void L293D_HBridge::startBackward() {
+    switch (motor) {
+        case Motor::MOTOR1:
+            _m1Controll2.setLevel(0);
+            _m1Controll1.setLevel(1);
+            break;
+        case Motor::MOTOR2:
+            _m2Controll2.setLevel(0);
+            _m2Controll1.setLevel(1);
+            break;
+        case Motor::BOTH:
+            _m1Controll2.setLevel(0);
+            _m1Controll1.setLevel(1);
+            _m2Controll2.setLevel(0);
+            _m2Controll1.setLevel(1);
+            break;
+    }
+}
+
+void L293D_HBridge::startLeft() {
+    switch (motor) {
+        case Motor::MOTOR1:
+            _m1Controll2.setLevel(1);
+            _m1Controll1.setLevel(1);
+            break;
+        case Motor::MOTOR2:
+            _m2Controll2.setLevel(0);
+            _m2Controll1.setLevel(0);
+            break;
+        case Motor::BOTH:
+            _m1Controll2.setLevel(1);
+            _m1Controll1.setLevel(1);
+            _m2Controll2.setLevel(0);
+            _m2Controll1.setLevel(0);
+            break;
+    }
+}
+
+void L293D_HBridge::startRight() {
+    switch (motor) {
+        case Motor::MOTOR1:
+            _m1Controll2.setLevel(0);
+            _m1Controll1.setLevel(0);
+            break;
+        case Motor::MOTOR2:
+            _m2Controll2.setLevel(1);
+            _m2Controll1.setLevel(1);
+            break;
+        case Motor::BOTH:
+            _m1Controll2.setLevel(0);
+            _m1Controll1.setLevel(0);
+            _m2Controll2.setLevel(1);
+            _m2Controll1.setLevel(1);
             break;
     }
 }

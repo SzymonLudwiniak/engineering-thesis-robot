@@ -4,7 +4,7 @@
 
 enum class Motor { MOTOR1, MOTOR2, BOTH };
 
-enum class MotorDirection { FORWARD, BACKWARD };
+enum class MotorDirection { FORWARD, BACKWARD, LEFT, RIGHT };
 
 
 class IHBridge {
