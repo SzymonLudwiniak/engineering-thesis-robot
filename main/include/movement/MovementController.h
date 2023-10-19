@@ -8,10 +8,7 @@ class MovementController : public IMovementController {
     MovementController(IHbridge &bridge);
     ~MovementController();
 
-    void startMovement(MovementDirection direction) override;
-    void stopMovement() override;
     void moveFor(uint32_t millis, MovementDirection direction) override;
-
     void rotateFor(uint32_t millis, MovementDirection direction) override;
 
    private:

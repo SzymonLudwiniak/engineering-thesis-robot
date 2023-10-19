@@ -11,18 +11,6 @@ MovementController::MovementController(IHbridge &bridge) : _bridge(bridge) {
 
 MovementController::~MovementController() {}
 
-void MovementController::startMovement(MovementDirection direction) {
-    if (direction == MotorDirection::BACKWARD) {
-        _bridge.start(Motor::BOTH, MotorDirection::BACKWARD);
-        return;
-    }
-    _bridge.start(Motor::BOTH, MotorDirection::FORWARD);
-}
-
-void MovementController::stopMovement() {
-    _bridge.setMotorState(Motor::BOTH, 0);
-}
-
 void MovementController::moveFor(uint32_t millis, MovementDirection direction) {
     if (direction != MovementDirection::BACKWARD &&
         direction != MovementDirection::BACKWARD) {
