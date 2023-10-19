@@ -40,14 +40,14 @@ ULN200X_StepperMotor stepper(A, B, C, D);
 Scanner scanner(sensor, stepper);
 
 extern "C" void app_main() {
-    while(1) {
-        moveController.moveFor(1000, MovementDirection::FORWARD);
-        vTaskDelay(100 / portTICK_PERIOD_MS);
-        moveController.rotateFor(1000, MovementDirection::LEFT);
-        vTaskDelay(100 / portTICK_PERIOD_MS);
-        moveController.moveFor(1000, MovementDirection::BACKWARD);
-        vTaskDelay(100 / portTICK_PERIOD_MS);
-        moveController.rotateFor(1000, MovementDirection::RIGTH);
-        vTaskDelay(100 / portTICK_PERIOD_MS);
-    }
+    // while(1) {
+        // moveController.moveFor(1000, MovementDirection::FORWARD);
+        // vTaskDelay(100 / portTICK_PERIOD_MS);
+        // moveController.rotateFor(1000, MovementDirection::LEFT);
+        // vTaskDelay(100 / portTICK_PERIOD_MS);
+        // moveController.moveFor(1000, MovementDirection::BACKWARD);
+        // vTaskDelay(100 / portTICK_PERIOD_MS);
+        // moveController.rotateFor(1000, MovementDirection::RIGTH);
+        // vTaskDelay(100 / portTICK_PERIOD_MS);
+    // }
 }

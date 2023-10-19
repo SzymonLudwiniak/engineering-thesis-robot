@@ -11,10 +11,17 @@ class MovementController : public IMovementController {
     void moveFor(uint32_t millis, MovementDirection direction) override;
     void rotateFor(uint32_t millis, MovementDirection direction) override;
 
+    int32_t getPose() override;
+
    private:
     IHBridge &_bridge;
 
-    int32_t _posX;
-    int32_t _posY;
-    int16_t _degrees;
+    struct sPose {
+        int32_t x;
+        int32_t y;
+        int16_t degrees;
+    } _pose;
+
+    void recalculatePosition(uint32_t millis);
+    void recalculateAngle(uint32_t millis, MovementDirection dir);
 };

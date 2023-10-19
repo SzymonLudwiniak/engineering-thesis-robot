@@ -77,3 +77,5 @@
 #define LOW 0
 
 #define MEASURE_COUNT   181
+
+#define PI 3.14159265

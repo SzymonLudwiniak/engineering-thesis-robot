@@ -10,4 +10,5 @@ class IMovementController {
 
     virtual void moveFor(uint32_t millis, MovementDirection direction) = 0;
     virtual void rotateFor(uint32_t millis, MovementDirection direction) = 0;
+    virtual int32_t getPose() = 0;
 };
