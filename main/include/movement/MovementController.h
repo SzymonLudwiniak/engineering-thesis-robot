@@ -5,7 +5,7 @@
 
 class MovementController : public IMovementController {
    public:
-    MovementController(IHbridge &bridge);
+    MovementController(IHBridge &bridge);
     ~MovementController();
 
     void moveFor(uint32_t millis, MovementDirection direction) override;

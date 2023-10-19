@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdio.h>
+
 #include "IHBridge.h"
 
 #include "drivers/gpio/IGPIO.h"
@@ -26,8 +28,8 @@ class L293D_HBridge : public IHBridge{
     IGPIO &_m2Controll1;
     IGPIO &_m2Controll2;
 
-    void startForward();
-    void startBackward();
-    void startLeft();
-    void startRight();
+    void startForward(Motor motor);
+    void startBackward(Motor motor);
+    void startLeft(Motor motor);
+    void startRight(Motor motor);
 };

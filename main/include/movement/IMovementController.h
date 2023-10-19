@@ -1,11 +1,8 @@
 #pragma once
 
-enum class MovementDirection {
-    FORWARD,
-    BACKWARD,
-    LEFT,
-    RIGTH
-}
+#include <cstdint>
+
+enum class MovementDirection { FORWARD, BACKWARD, LEFT, RIGTH };
 
 class IMovementController {
    public:

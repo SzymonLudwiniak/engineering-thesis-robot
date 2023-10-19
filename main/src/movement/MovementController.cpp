@@ -2,7 +2,7 @@
 
 #include "esp_timer.h"
 
-MovementController::MovementController(IHbridge &bridge) : _bridge(bridge) {
+MovementController::MovementController(IHBridge &bridge) : _bridge(bridge) {
     _posX = 0;
     _posY = 0;
     _degrees = 0;
@@ -12,10 +12,8 @@ MovementController::MovementController(IHbridge &bridge) : _bridge(bridge) {
 MovementController::~MovementController() {}
 
 void MovementController::moveFor(uint32_t millis, MovementDirection direction) {
-    if (direction != MovementDirection::BACKWARD &&
-        direction != MovementDirection::BACKWARD) {
-        return;
-    }
+
+    uint64_t micro = millis*1000;
     uint64_t time = esp_timer_get_time();
 
     if (direction == MovementDirection::BACKWARD) {
@@ -24,13 +22,14 @@ void MovementController::moveFor(uint32_t millis, MovementDirection direction) {
         _bridge.start(Motor::BOTH, MotorDirection::FORWARD);
     }
 
-    while (esp_timer_get_time() - time >= millis)
+    while (esp_timer_get_time() - time < micro)
         ;
-    stopMovement();
+    _bridge.stop(Motor::BOTH);
 }
 
 void MovementController::rotateFor(uint32_t millis,
                                    MovementDirection direction) {
+    uint64_t micro = millis*1000;
     uint64_t time = esp_timer_get_time();
 
     if (direction == MovementDirection::LEFT) {
@@ -39,7 +38,7 @@ void MovementController::rotateFor(uint32_t millis,
         _bridge.start(Motor::BOTH, MotorDirection::RIGHT);
     }
 
-    while (esp_timer_get_time() - time >= millis)
+    while (esp_timer_get_time() - time < micro)
         ;
-    stopMovement();
+    _bridge.stop(Motor::BOTH);
 }

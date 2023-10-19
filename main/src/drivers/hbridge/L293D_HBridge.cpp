@@ -33,16 +33,16 @@ void L293D_HBridge::setMotorState(Motor motor, uint8_t state) {
 void L293D_HBridge::start(Motor motor, MotorDirection direction) {
     switch (direction) {
         case MotorDirection::FORWARD:
-            startForward();
+            startForward(motor);
             break;
         case MotorDirection::BACKWARD:
-            startBackward();
+            startBackward(motor);
             break;
         case MotorDirection::LEFT:
-            startLeft();
+            startLeft(motor);
             break;
         case MotorDirection::RIGHT:
-            startRight();
+            startRight(motor);
             break;
         default:
             break;
@@ -68,7 +68,7 @@ void L293D_HBridge::stop(Motor motor) {
     }
 }
 
-void L293D_HBridge::startForward() {
+void L293D_HBridge::startForward(Motor motor) {
     switch (motor) {
         case Motor::MOTOR1:
             _m1Controll1.setLevel(0);
@@ -83,11 +83,12 @@ void L293D_HBridge::startForward() {
             _m1Controll2.setLevel(1);
             _m2Controll1.setLevel(0);
             _m2Controll2.setLevel(1);
+            printf("FORWARD\n");
             break;
     }
 }
 
-void L293D_HBridge::startBackward() {
+void L293D_HBridge::startBackward(Motor motor) {
     switch (motor) {
         case Motor::MOTOR1:
             _m1Controll2.setLevel(0);
@@ -102,11 +103,12 @@ void L293D_HBridge::startBackward() {
             _m1Controll1.setLevel(1);
             _m2Controll2.setLevel(0);
             _m2Controll1.setLevel(1);
+            printf("BACKWARD\n");
             break;
     }
 }
 
-void L293D_HBridge::startLeft() {
+void L293D_HBridge::startLeft(Motor motor) {
     switch (motor) {
         case Motor::MOTOR1:
             _m1Controll2.setLevel(1);
@@ -117,15 +119,16 @@ void L293D_HBridge::startLeft() {
             _m2Controll1.setLevel(0);
             break;
         case Motor::BOTH:
-            _m1Controll2.setLevel(1);
-            _m1Controll1.setLevel(1);
             _m2Controll2.setLevel(0);
-            _m2Controll1.setLevel(0);
+            _m2Controll1.setLevel(1);
+            _m1Controll1.setLevel(0);
+            _m1Controll2.setLevel(1);
+            printf("LEFT\n");
             break;
     }
 }
 
-void L293D_HBridge::startRight() {
+void L293D_HBridge::startRight(Motor motor) {
     switch (motor) {
         case Motor::MOTOR1:
             _m1Controll2.setLevel(0);
@@ -136,10 +139,11 @@ void L293D_HBridge::startRight() {
             _m2Controll1.setLevel(1);
             break;
         case Motor::BOTH:
-            _m1Controll2.setLevel(0);
-            _m1Controll1.setLevel(0);
+            _m2Controll1.setLevel(0);
             _m2Controll2.setLevel(1);
-            _m2Controll1.setLevel(1);
+            _m1Controll2.setLevel(0);
+            _m1Controll1.setLevel(1);
+            printf("RIGHT\n");
             break;
     }
 }
