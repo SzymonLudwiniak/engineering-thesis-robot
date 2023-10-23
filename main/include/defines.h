@@ -28,6 +28,10 @@
 
 #define WIFI_SSID           "UPC2297375"
 #define WIFI_PASS           "ncjuenfmuG4j"
+
+#define MAX_SSID_LEN        32
+#define MAX_PASS_LEN        64
+
 #define MAXIMUM_RETRY       10
 
 #define MAX_PACKET_LEN      64

@@ -2,9 +2,12 @@
 
 #include <string.h>
 
+#include "IWifiDriver.h"
 #include "defines.h"
 #include "esp_wifi.h"
+#include "esp_wifi_types.h"
 #include "etl/string.h"
+#include "freertos/event_groups.h"
 
 class WifiDriver : public IWifiDriver {
    public:
@@ -15,6 +18,7 @@ class WifiDriver : public IWifiDriver {
     void init() override;
 
    private:
+    static EventGroupHandle_t eventGroup;
     wifi_config_t wifiConfig;
 
     static void eventHandler(void* arg,
@@ -22,7 +26,7 @@ class WifiDriver : public IWifiDriver {
                              int32_t event_id,
                              void* event_data);
 
-    void sendPacket(const etl::string<MAX_PACKET_LEN> &data);
+    void sendPacket(const etl::string<MAX_PACKET_LEN>& data);
 };
 
 // void init_wifi();

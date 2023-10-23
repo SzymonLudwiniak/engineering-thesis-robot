@@ -5,4 +5,5 @@ idf_component_register(SRCS "main.cpp"
                             "src/drivers/stepperMotor/ULN200X_StepperMotor.cpp"
                             "src/scanner/Scanner.cpp"
                             "src/movement/MovementController.cpp"
+                            "src/wifi/WifiDriver.cpp"
                     INCLUDE_DIRS "./include/")

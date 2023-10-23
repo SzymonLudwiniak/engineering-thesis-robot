@@ -1,8 +1,8 @@
 #include "movement/MovementController.h"
 
 #include <cmath>
-#define _USE_MATH_DEFINES
 
+#include "defines.h"
 #include "esp_timer.h"
 
 MovementController::MovementController(IHBridge &bridge)
@@ -45,12 +45,11 @@ void MovementController::rotateFor(uint32_t millis,
     recalculateAngle(millis, direction);
 }
 
-int32_t MovementController::getPose() {
+sPose MovementController::getPose() {
     return _pose;
 }
 
-void MovementController::recalculatePosition(uint32_t millis,
-                                             MovementDirection dir) {
+void MovementController::recalculatePosition(uint32_t millis) {
     float theta = _pose.degrees*PI/180;
     _pose.x += millis * cosf(theta);
     _pose.y += millis * sinf(theta);

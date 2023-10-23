@@ -11,6 +11,7 @@
 #include "freertos/task.h"
 #include "movement/MovementController.h"
 #include "scanner/Scanner.h"
+#include "wifi/WifiDriver.h"
 
 GPIO A(IN1, PinMode::OUTPUT);
 GPIO B(IN2, PinMode::OUTPUT);
@@ -41,13 +42,20 @@ Scanner scanner(sensor, stepper);
 
 extern "C" void app_main() {
     // while(1) {
-        // moveController.moveFor(1000, MovementDirection::FORWARD);
-        // vTaskDelay(100 / portTICK_PERIOD_MS);
-        // moveController.rotateFor(1000, MovementDirection::LEFT);
-        // vTaskDelay(100 / portTICK_PERIOD_MS);
-        // moveController.moveFor(1000, MovementDirection::BACKWARD);
-        // vTaskDelay(100 / portTICK_PERIOD_MS);
-        // moveController.rotateFor(1000, MovementDirection::RIGTH);
-        // vTaskDelay(100 / portTICK_PERIOD_MS);
+    // moveController.moveFor(1000, MovementDirection::FORWARD);
+    // vTaskDelay(100 / portTICK_PERIOD_MS);
+    // moveController.rotateFor(1000, MovementDirection::LEFT);
+    // vTaskDelay(100 / portTICK_PERIOD_MS);
+    // moveController.moveFor(1000, MovementDirection::BACKWARD);
+    // vTaskDelay(100 / portTICK_PERIOD_MS);
+    // moveController.rotateFor(1000, MovementDirection::RIGTH);
+    // vTaskDelay(100 / portTICK_PERIOD_MS);
     // }
+    WifiDriver wifi;
+    wifi.init();
+
+    while (1) {
+        wifi.sendRobotState();
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+    }
 }
