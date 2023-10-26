@@ -29,6 +29,9 @@
 #define WIFI_SSID           "UPC2297375"
 #define WIFI_PASS           "ncjuenfmuG4j"
 
+#define HOST_IP_ADDR "192.168.0.192"
+#define PORT 49152
+
 #define MAX_SSID_LEN        32
 #define MAX_PASS_LEN        64
 

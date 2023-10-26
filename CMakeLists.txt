@@ -9,5 +9,9 @@ set(CMAKE_CXX_STANDARD 20)
 add_subdirectory(etl)
 link_libraries(etl::etl)
 
+# (Not part of the boilerplate)
+# This example uses an extra component for common functions such as Wi-Fi and Ethernet connection.
+set(EXTRA_COMPONENT_DIRS $ENV{IDF_PATH}/examples/common_components/protocol_examples_common)
+
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(engineering-thesis-robot-v2)
